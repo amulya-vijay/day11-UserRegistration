@@ -3,10 +3,10 @@ package com.userRegistrationTest;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
+
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,6 +20,7 @@ public class UserRegistrationTest {
 	private String firstName;
 	private String lastName;
 	private String emailId;
+	private String phoneNum;
 	private UserRegistration userRegistration;
 	
 	
@@ -28,20 +29,20 @@ public class UserRegistrationTest {
 	 userRegistration = new UserRegistration();
 	}
 	
-	public UserRegistrationTest(String fName, String lName, String email) {
+	public UserRegistrationTest(String fName, String lName, String email, String phoneNum) {
 		this.firstName=fName;
 		this.lastName=lName;
 		this.emailId=email;
-		
+		this.phoneNum=phoneNum;
 	}
 	
 	@Parameterized.Parameters
 	public static Collection userInfo() {
 		
-		return  Arrays.asList(new Object[][] {{"Amulyla","Konangi","amulya@gmail.com"},
-				{"amulya","daeerN","amulya.com"},
-				{"8mulya","7contou","amulya8_vijay@gmail"},
-				{"Aelin","Ashryver","aelin.87ashryver@yahoo.in"}
+		return  Arrays.asList(new Object[][] {{"Amulyla","Konangi","amulya@gmail.com","91 7013426250"},
+				{"amulya","daeerN","amulya.com","701256389"},
+				{"8mulya","7contou","amulya8_vijay@gmail","3625748900"},
+				{"Aelin","Ashryver","aelin.87ashryver@yahoo.in","12584796300"}
 				});
 				
 	}
@@ -64,8 +65,14 @@ public class UserRegistrationTest {
 	@Test
 	public void emailIdValidation() {
 		System.out.println("Email-Id : "+emailId+" : "+userRegistration.validateEmailId(emailId));
-		Assert.assertEquals(lastName,userRegistration.validateEmailId(emailId));
-	
+		Assert.assertEquals(emailId,userRegistration.validateEmailId(emailId));
 	}
+	
+	@Test
+	public void phoneNumberValidation() {
+		System.out.println("Mobile Number : "+phoneNum+" : "+userRegistration.validatePhoneNumber(phoneNum));
+		Assert.assertEquals(phoneNum,userRegistration.validatePhoneNumber(phoneNum));
+	}
+	
 
 }
