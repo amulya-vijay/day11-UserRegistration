@@ -7,10 +7,10 @@ public class UserRegistration {
 	
 	
 	
-	public String validateName(String firstName) {
+	public String validateFirstName(String firstName) {
 		
 
-		Pattern pattern = Pattern.compile("[A-Z]{1}[a-z]{2,}");
+		Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}$");
 		Matcher matcher = pattern.matcher(firstName);
 		if(matcher.find()) {
 			return firstName;
@@ -19,6 +19,19 @@ public class UserRegistration {
 		}
 		
 	}
-
+	
+	public String validateLastName(String lastName) {
+		
+		Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}$");
+		Matcher matcher = pattern.matcher(lastName);
+		if(matcher.find()) {
+			return lastName;
+		}else {
+			return "Invalid Last Name : last name should begin with a upper case letter and must contain minimum 3 letters.";
+		}
 	}
+}
+
+
+
 
