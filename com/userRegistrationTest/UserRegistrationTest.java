@@ -21,6 +21,7 @@ public class UserRegistrationTest {
 	private String lastName;
 	private String emailId;
 	private String phoneNum;
+	private String password;
 	private UserRegistration userRegistration;
 	
 	
@@ -29,20 +30,21 @@ public class UserRegistrationTest {
 	 userRegistration = new UserRegistration();
 	}
 	
-	public UserRegistrationTest(String fName, String lName, String email, String phoneNum) {
+	public UserRegistrationTest(String fName, String lName, String email, String phoneNum, String password) {
 		this.firstName=fName;
 		this.lastName=lName;
 		this.emailId=email;
 		this.phoneNum=phoneNum;
+		this.password=password;
 	}
 	
 	@Parameterized.Parameters
 	public static Collection userInfo() {
 		
-		return  Arrays.asList(new Object[][] {{"Amulyla","Konangi","amulya@gmail.com","91 7013426250"},
-				{"amulya","daeerN","amulya.com","701256389"},
-				{"8mulya","7contou","amulya8_vijay@gmail","3625748900"},
-				{"Aelin","Ashryver","aelin.87ashryver@yahoo.in","12584796300"}
+		return  Arrays.asList(new Object[][] {{"Amulyla","Konangi","amulya@gmail.com","91 7013426250","amulyA9877#"},
+				{"amulya","daeerN","amulya.com","701256389","15245"},
+				{"8mulya","7contou","amulya8_vijay@gmail","3625748900","amulya87"},
+				{"Aelin","Ashryver","aelin.87ashryver@yahoo.in","12584796300","amG87"}
 				});
 				
 	}
@@ -74,5 +76,10 @@ public class UserRegistrationTest {
 		Assert.assertEquals(phoneNum,userRegistration.validatePhoneNumber(phoneNum));
 	}
 	
+	@Test
+	public void passwordValidation() {
+		System.out.println("Password : "+password+" : "+userRegistration.validatePassword(password));
+		Assert.assertEquals("password set",userRegistration.validatePassword(password));
+	}
 
 }
