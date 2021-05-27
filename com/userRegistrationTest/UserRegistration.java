@@ -30,6 +30,18 @@ public class UserRegistration {
 			return "Invalid Last Name : last name should begin with a upper case letter and must contain minimum 3 letters.";
 		}
 	}
+
+	public String validateEmailId(String emailId) {
+		
+		Pattern pattern = Pattern.compile("^[a-z0-9+.-_]+@[a-z.]+[comin]$");
+		Matcher matcher = pattern.matcher(emailId);
+		if(matcher.find()) {
+			return emailId;
+		}else {
+			return "Invalid Email ID: valid format- example@domain.com";
+		}
+		
+	}
 }
 
 

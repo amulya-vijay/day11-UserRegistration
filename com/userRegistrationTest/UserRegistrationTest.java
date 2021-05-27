@@ -19,6 +19,7 @@ public class UserRegistrationTest {
 	
 	private String firstName;
 	private String lastName;
+	private String emailId;
 	private UserRegistration userRegistration;
 	
 	
@@ -27,16 +28,21 @@ public class UserRegistrationTest {
 	 userRegistration = new UserRegistration();
 	}
 	
-	public UserRegistrationTest(String fName, String lName) {
+	public UserRegistrationTest(String fName, String lName, String email) {
 		this.firstName=fName;
 		this.lastName=lName;
+		this.emailId=email;
 		
 	}
 	
 	@Parameterized.Parameters
 	public static Collection userInfo() {
 		
-		return  Arrays.asList(new Object[][] {{"Amulyla","Konangi"},{"amulya","daeerN"},{"8mulya","7contou"},{"Aelin","Ashryver"}});
+		return  Arrays.asList(new Object[][] {{"Amulyla","Konangi","amulya@gmail.com"},
+				{"amulya","daeerN","amulya.com"},
+				{"8mulya","7contou","amulya8_vijay@gmail"},
+				{"Aelin","Ashryver","aelin.87ashryver@yahoo.in"}
+				});
 				
 	}
 
@@ -55,5 +61,11 @@ public class UserRegistrationTest {
 		Assert.assertEquals(lastName,userRegistration.validateLastName(lastName));
 	}
 	
+	@Test
+	public void emailIdValidation() {
+		System.out.println("Email-Id : "+emailId+" : "+userRegistration.validateEmailId(emailId));
+		Assert.assertEquals(lastName,userRegistration.validateEmailId(emailId));
+	
+	}
 
 }
