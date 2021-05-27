@@ -3,66 +3,80 @@ package com.userRegistrationTest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.userRegistrationTest.InvalidInputException.error_type;
+
 public class UserRegistration {
 	
 	
 	
-	public String validateFirstName(String firstName) {
+	public error_type validateFirstName(String firstName) throws InvalidInputException {
 		
 
 		Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}$");
 		Matcher matcher = pattern.matcher(firstName);
-		if(matcher.find()) {
-			return firstName;
-		}else {
-			return "Invalid First Name : First name should begin with a upper case letter and must contain minimum 3 letters.";
+		try {
+		if(!matcher.find()) {
+			throw new InvalidInputException();
 		}
+		}catch(InvalidInputException e) {
+			return InvalidInputException.error_type.Invalid_first_name;
+		}
+		return null;
 		
 	}
 	
-	public String validateLastName(String lastName) {
+	public error_type validateLastName(String lastName) throws InvalidInputException {
 		
 		Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}$");
 		Matcher matcher = pattern.matcher(lastName);
-		if(matcher.find()) {
-			return lastName;
-		}else {
-			return "Invalid Last Name : last name should begin with a upper case letter and must contain minimum 3 letters.";
-		}
+		try {
+		if(!matcher.find()) {
+			throw new InvalidInputException();
+		   }
+		}catch(InvalidInputException e) {
+			return InvalidInputException.error_type.Invalid_last_name; 	
+			}
+		return null;
 	}
 
-	public String validateEmailId(String emailId) {
+	public error_type validateEmailId(String emailId) throws InvalidInputException {
 		
 		Pattern pattern = Pattern.compile("^[a-z0-9+.-_]+@[a-z.]+[comin]$");
 		Matcher matcher = pattern.matcher(emailId);
-		if(matcher.find()) {
-			return emailId;
-		}else {
-			return "Invalid Email ID: valid format- example@domain.com";
+		try {
+		if(!matcher.find()) {
+			throw new InvalidInputException();
 		}
+		}catch(InvalidInputException e) {
+			return InvalidInputException.error_type.Invalid_Email; 	
+			}
+		return null;
 		
 	}
 
-	public String validatePhoneNumber(String phoneNum) {
+	public error_type validatePhoneNumber(String phoneNum) throws InvalidInputException {
 		Pattern pattern = Pattern.compile("[91]{2}[: :][6789]{1}[0-9]{9}$");
 		Matcher matcher = pattern.matcher(phoneNum);
-		if(matcher.find()) {
-			return phoneNum;
-		}else {
-			return "Invalid Phone Number: valid format- 91 [10-digit-number]";
-		}
+		
+		try {
+		if(!matcher.find()) {
+			throw new InvalidInputException();}
+		}catch(InvalidInputException e) {
+			return InvalidInputException.error_type.Invalid_mobile_number; 	
+			}
+		return null;
 	}
 
-	public String validatePassword(String password) {
+	public error_type validatePassword(String password) throws InvalidInputException {
 		Pattern pattern = Pattern.compile("(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]){8,}");
 		Matcher matcher = pattern.matcher(password);
-	
+	try {
 		if(matcher.find()) {
-			return "password set";
-		}else {
-			return "Invalid Password: Password should contain atleast 8 characters"+
-					" with atleast one upper case letter,one numeric character and one special character.";
-		}
+			throw new InvalidInputException();}
+		}catch(InvalidInputException e) {
+			return InvalidInputException.error_type.Invalid_password; 	
+			}
+		return null;
 	}
 	
 }

@@ -51,33 +51,37 @@ public class UserRegistrationTest {
 
 	
 	@Test
-	public void firstNameValidation() {
+	public void firstNameValidation() throws InvalidInputException {
 		
-		System.out.println("first Name : "+firstName+" : "+userRegistration.validateFirstName(firstName));
+		
+			System.out.println("first Name : "+firstName+" : "+userRegistration.validateFirstName(firstName));
+		
+	
 		Assert.assertEquals(firstName,userRegistration.validateFirstName(firstName));
+		
 	}
 	
 	@Test
-	public void lastNameValidation() {
+	public void lastNameValidation() throws InvalidInputException {
 		
 		System.out.println("last Name : "+lastName+" : "+userRegistration.validateLastName(lastName));
 		Assert.assertEquals(lastName,userRegistration.validateLastName(lastName));
 	}
 	
 	@Test
-	public void emailIdValidation() {
+	public void emailIdValidation() throws InvalidInputException {
 		System.out.println("Email-Id : "+emailId+" : "+userRegistration.validateEmailId(emailId));
 		Assert.assertEquals(emailId,userRegistration.validateEmailId(emailId));
 	}
 	
 	@Test
-	public void phoneNumberValidation() {
+	public void phoneNumberValidation() throws InvalidInputException {
 		System.out.println("Mobile Number : "+phoneNum+" : "+userRegistration.validatePhoneNumber(phoneNum));
 		Assert.assertEquals(phoneNum,userRegistration.validatePhoneNumber(phoneNum));
 	}
 	
 	@Test
-	public void passwordValidation() {
+	public void passwordValidation() throws InvalidInputException {
 		System.out.println("Password : "+password+" : "+userRegistration.validatePassword(password));
 		Assert.assertEquals("password set",userRegistration.validatePassword(password));
 	}
