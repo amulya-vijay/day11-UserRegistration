@@ -1,0 +1,3 @@
+module UserRegistrationTest {
+	requires junit;
+}
