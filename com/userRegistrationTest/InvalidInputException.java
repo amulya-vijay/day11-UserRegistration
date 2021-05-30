@@ -1,5 +1,6 @@
 package com.userRegistrationTest;
 
+@SuppressWarnings("serial")
 public class InvalidInputException extends Throwable {
 	
 	
@@ -11,7 +12,8 @@ public class InvalidInputException extends Throwable {
 		Invalid_last_name,
 		Invalid_Email,
 		Invalid_mobile_number,
-		Invalid_password
+		Invalid_password,
+		No_error
 	}
 	
 	

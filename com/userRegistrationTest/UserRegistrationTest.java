@@ -15,7 +15,7 @@ import org.junit.runners.Parameterized;
 
 
 @RunWith(Parameterized.class)
-public class UserRegistrationTest {
+public class UserRegistrationTest extends UserRegistration{
 	
 	private String firstName;
 	private String lastName;
@@ -41,7 +41,7 @@ public class UserRegistrationTest {
 	@Parameterized.Parameters
 	public static Collection userInfo() {
 		
-		return  Arrays.asList(new Object[][] {{"Amulyla","Konangi","amulya@gmail.com","91 7013426250","amulyA9877#"},
+		return  Arrays.asList(new Object[][] {{"Amulya","Konangi","amulya@gmail.com","91 7013426250","amulyA9877#"},
 				{"amulya","daeerN","amulya.com","701256389","15245"},
 				{"8mulya","7contou","amulya8_vijay@gmail","3625748900","amulya87"},
 				{"Aelin","Ashryver","aelin.87ashryver@yahoo.in","12584796300","amG87"}
@@ -53,37 +53,37 @@ public class UserRegistrationTest {
 	@Test
 	public void firstNameValidation() throws InvalidInputException {
 		
-		
-			System.out.println("first Name : "+firstName+" : "+userRegistration.validateFirstName(firstName));
-		
-	
-		Assert.assertEquals(firstName,userRegistration.validateFirstName(firstName));
+		System.out.println("First Name : "+firstName+" : "+Validation.exception(firstNameValidation.validate(firstName),InvalidInputException.error_type.Invalid_first_name));
+		Assert.assertEquals(InvalidInputException.error_type.No_error,Validation.exception(firstNameValidation.validate(firstName),InvalidInputException.error_type.Invalid_first_name ));
 		
 	}
 	
 	@Test
 	public void lastNameValidation() throws InvalidInputException {
 		
-		System.out.println("last Name : "+lastName+" : "+userRegistration.validateLastName(lastName));
-		Assert.assertEquals(lastName,userRegistration.validateLastName(lastName));
+		System.out.println("Last Name : "+lastName+" : "+Validation.exception(lastNameValidation.validate(lastName),InvalidInputException.error_type.Invalid_first_name));
+		Assert.assertEquals(InvalidInputException.error_type.No_error,Validation.exception(lastNameValidation.validate(firstName),InvalidInputException.error_type.Invalid_last_name ));
+
 	}
 	
 	@Test
 	public void emailIdValidation() throws InvalidInputException {
-		System.out.println("Email-Id : "+emailId+" : "+userRegistration.validateEmailId(emailId));
-		Assert.assertEquals(emailId,userRegistration.validateEmailId(emailId));
+		System.out.println("Email-Id : "+emailId+" : "+Validation.exception(emailIdValidation.validate(emailId),InvalidInputException.error_type.Invalid_Email));
+		Assert.assertEquals(InvalidInputException.error_type.No_error,Validation.exception(emailIdValidation.validate(emailId),InvalidInputException.error_type.Invalid_Email ));
+
 	}
 	
 	@Test
 	public void phoneNumberValidation() throws InvalidInputException {
-		System.out.println("Mobile Number : "+phoneNum+" : "+userRegistration.validatePhoneNumber(phoneNum));
-		Assert.assertEquals(phoneNum,userRegistration.validatePhoneNumber(phoneNum));
+		System.out.println("Mobile Number : "+phoneNum+" : "+Validation.exception(phoneNumValidation.validate(phoneNum),InvalidInputException.error_type.Invalid_mobile_number));
+		Assert.assertEquals(InvalidInputException.error_type.No_error,Validation.exception(phoneNumValidation.validate(phoneNum),InvalidInputException.error_type.Invalid_mobile_number ));
+
 	}
 	
 	@Test
 	public void passwordValidation() throws InvalidInputException {
-		System.out.println("Password : "+password+" : "+userRegistration.validatePassword(password));
-		Assert.assertEquals("password set",userRegistration.validatePassword(password));
+		System.out.println("Password : "+password+" : "+Validation.exception(passwordValidation.validate(password),InvalidInputException.error_type.Invalid_password));
+		Assert.assertEquals(InvalidInputException.error_type.No_error,Validation.exception(passwordValidation.validate(password),InvalidInputException.error_type.Invalid_password ));
 	}
 
 }
